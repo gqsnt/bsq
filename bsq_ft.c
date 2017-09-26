@@ -1,6 +1,6 @@
 #include "bsq.h"
 
-int bsq_size(char tab[200][200], t_coor max, t_coor coor, t_char param)
+int bsq_size(char **tab, t_coor max, t_coor coor, t_char param)
 {
     int     size;
     int     i;
@@ -24,7 +24,7 @@ int bsq_size(char tab[200][200], t_coor max, t_coor coor, t_char param)
     return (size);
 }
 
-t_coor    *bsq(char tab[200][200], t_coor max, t_coor *max_bsq, t_char param)
+t_coor    *bsq(char **tab, t_coor max, t_coor *max_bsq, t_char param)
 {
     int i;
     int j;
@@ -52,7 +52,7 @@ t_coor    *bsq(char tab[200][200], t_coor max, t_coor *max_bsq, t_char param)
     return (max_bsq);
 }
 
-void    print_bsq(char buff[200][200],t_coor max_bsq, t_coor max, t_char param)
+void    print_bsq(char **buff,t_coor max_bsq, t_coor max, t_char param)
 {
     int i;
     int j;

@@ -1,6 +1,6 @@
 #include "bsq.h"
 
-int check_line(char tab[200][200], t_coor coor, int size, t_char param)
+int check_line(char **tab, t_coor coor, int size, t_char param)
 {
     int i;
 
@@ -14,7 +14,7 @@ int check_line(char tab[200][200], t_coor coor, int size, t_char param)
     return (0);
 }
 
-int check_col(char tab[200][200], t_coor coor, int size, t_char param)
+int check_col(char **tab, t_coor coor, int size, t_char param)
 {
     int i;
 
@@ -28,9 +28,10 @@ int check_col(char tab[200][200], t_coor coor, int size, t_char param)
     return (0);
 }
 
-t_coor     set_max_bsq(t_coor *max_bsq, t_coor coor, int temp)
+t_coor     *set_max_bsq(t_coor *max_bsq, t_coor coor, int temp)
 {
     max_bsq->x = coor.x;
     max_bsq->y = coor.y;
     max_bsq->size = temp;
+	return (max_bsq);
 }

@@ -63,7 +63,7 @@ char **malloc_tab(char **tab, t_coor max)
 
 	i = 0;
 	tab = malloc((max.y + 1) * sizeof(char *));
-	while(i <= max.y)
+	while(i < max.y)
 	{
 		tab[i] = malloc((max.x + 1) * sizeof(char));
 		i = i + 1;

@@ -3,11 +3,12 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdio.h>
 #include "bsq.h"
 
 
 
-char **ft_read_line(int fd, char buff[200][200], int size, char good)
+char **ft_read_line(int fd, char **buff, int size, t_char param)
 {
     char temp;
     int i;
@@ -17,7 +18,7 @@ char **ft_read_line(int fd, char buff[200][200], int size, char good)
     i = 0;
     j = 0;
     err = 1;
-    temp = good;
+    temp = param.good;
     while(i < size && err != 0)
     {
             err = read(fd, &temp, 1);
@@ -38,25 +39,37 @@ char **ft_read_line(int fd, char buff[200][200], int size, char good)
     return (buff);
 }
 
-char *ft_read_first_line(int fd, char *info)
+int			ft_read_first_line(char **argv, int *fd, char *info)
 {
-    int i;
-    char temp;
+    int		i;
+    char		temp;
 
     i = 0;
-    temp = '0';
-    while(temp != '\n')
+    temp = 0;
+    while (temp != '\n')
     {
-        read(fd, &temp, 1);
+        read(*fd, &temp, 1);
         info[i] = temp;
         i = i + 1;
     }
-    return (info);
+	i = 0;
+	temp = 0;
+	while (temp != '\n')
+	{
+		read(*fd, &temp, 1);
+		i = i + 1;
+	}
+	close(*fd);
+	*fd = open(argv[1], O_RDONLY);
+	temp = 0;
+	while (temp != '\n')
+		read(*fd, &temp, 1);
+    return (i - 1);
 }
 
-t_char  *set_param(char *info, t_char *param, t_coor *max)
+char		**set_param(char **tab, char *info, t_char *param, t_coor *max)
 {
-    int i;
+    int		i;
 
     i = 0;
     max->y = ft_atoi(info);
@@ -65,14 +78,14 @@ t_char  *set_param(char *info, t_char *param, t_coor *max)
     param->good = info[i];
     param->block = info[i + 1];
     param->wildcard = info[i + 2];
-
-    return (param);
+	tab = malloc_tab(tab, *max);
+    return (tab);
 }
 
 int main(int argc, char **argv)
 {
     int fd;
-    char buff[200][200];
+    char **buff;
     char info[10];
     t_char param;
     t_coor max_bsq;
@@ -83,14 +96,13 @@ int main(int argc, char **argv)
     max_bsq.size = 0;
     if (argc >= 1)
     {
-        fd = open("C:/Users/gab/Documents/c/bsq/bin/Debug/grid1", O_RDONLY);
+        fd = open(argv[1], O_RDONLY);
         if (fd == -1)
             return (0);
-        ft_read_first_line(fd, info);
-        set_param(info, &param, &max);
-        ft_read_line(fd, buff, max.y, param.good);
-        max.x = ft_strlen(buff[1]);
-        bsq(buff, max, &max_bsq, param);
+        max.x = ft_read_first_line(argv, &fd, info);
+        buff = set_param(buff, info, &param, &max);
+		ft_read_line(fd, buff, max.y, param);
+		bsq(buff, max, &max_bsq, param);
         print_bsq(buff, max_bsq, max, param);
     }
     close(fd);
