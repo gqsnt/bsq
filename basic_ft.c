@@ -4,29 +4,29 @@
 
 void    ft_putchar(char c)
 {
-    write(1, &c, 1);
+	write(1, &c, 1);
 }
 
 void    ft_putstr(char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (str[i])
-    {
-        ft_putchar(str[i]);
-        i = i + 1;
-    }
+	i = 0;
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i = i + 1;
+	}
 }
 
 int     ft_strlen(char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (str[i] != '\0')
-        i = i + 1;
-    return (i);
+	i = 0;
+	while (str[i] != '\0')
+		i = i + 1;
+	return (i);
 }
 
 int		ft_atoi(const char *str)
@@ -59,13 +59,14 @@ int		ft_atoi(const char *str)
 
 char **malloc_tab(char **tab, t_coor max)
 {
-    int i;
+	int i;
 
-    i = 0;
-    tab = malloc((max.y + 1) * sizeof(char *));
-    while(i <= t_coor)
-    {
-        tab[i] = malloc((max.x + 1) * sizeof(char));
-        i = i + 1;
-    return (tab);
+	i = 0;
+	tab = malloc((max.y + 1) * sizeof(char *));
+	while(i <= max.y)
+	{
+		tab[i] = malloc((max.x + 1) * sizeof(char));
+		i = i + 1;
+	}
+	return (tab);
 }
