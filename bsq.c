@@ -3,18 +3,16 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdio.h>
 #include "bsq.h"
 
 
 
-char **ft_read_line(int fd, char **buff, int size, t_char param)
+char		**ft_read_line(int fd, char **buff, int size, t_char param)
 {
-    char temp;
-    int i;
-    int j;
-    int err;
-
+    char	temp;
+    int		i;
+    int		j;
+    int		err;
     i = 0;
     j = 0;
     err = 1;
@@ -42,7 +40,7 @@ char **ft_read_line(int fd, char **buff, int size, t_char param)
 int			ft_read_first_line(char **argv, int *fd, char *info)
 {
     int		i;
-    char		temp;
+    char	temp;
 
     i = 0;
     temp = 0;
@@ -82,11 +80,11 @@ char		**set_param(char **tab, char *info, t_char *param, t_coor *max)
     return (tab);
 }
 
-int main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-    int fd;
-    char **buff;
-    char info[10];
+    int		fd;
+    char	**buff;
+    char	info[10];
     t_char param;
     t_coor max_bsq;
     t_coor max;
@@ -94,6 +92,7 @@ int main(int argc, char **argv)
     max_bsq.x = 0;
     max_bsq.y = 0;
     max_bsq.size = 0;
+	buff = NULL;
     if (argc >= 1)
     {
         fd = open(argv[1], O_RDONLY);
@@ -104,7 +103,8 @@ int main(int argc, char **argv)
 		ft_read_line(fd, buff, max.y, param);
 		bsq(buff, max, &max_bsq, param);
         print_bsq(buff, max_bsq, max, param);
+		close(fd);
+		free(buff);
     }
-    close(fd);
     return (0);
 }

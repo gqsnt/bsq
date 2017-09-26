@@ -6,7 +6,7 @@ SRC		=	bsq.c \
 			bsq_ft2.c \
 			basic_ft.c
 
-CFLAGS	= -O2
+CFLAGS	= -Wall -Werror -Wextra
 
 OBJ = $(SRC:.c=.o)
 

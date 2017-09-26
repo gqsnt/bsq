@@ -1,16 +1,12 @@
 #include "bsq.h"
 
-int bsq_size(char **tab, t_coor max, t_coor coor, t_char param)
+int			bsq_size(char **tab, t_coor max, t_coor coor, t_char param)
 {
-    int     size;
-    int     i;
-    int     j;
-    int     error;
+    int		size;
+    int		error;
 
     size = 0;
-    i = coor.y;
-    j = coor.x;
-    error = 0;
+	error = 0;
     if (tab[coor.y][coor.x] == param.block)
         return (0);
     while(size + coor.x < max.x && size + coor.y < max.y && error == 0)
@@ -24,12 +20,12 @@ int bsq_size(char **tab, t_coor max, t_coor coor, t_char param)
     return (size);
 }
 
-t_coor    *bsq(char **tab, t_coor max, t_coor *max_bsq, t_char param)
+t_coor		*bsq(char **tab, t_coor max, t_coor *max_bsq, t_char param)
 {
-    int i;
-    int j;
-    int temp;
-    t_coor coor;
+    int		i;
+    int		j;
+    int		temp;
+    t_coor	coor;
 
     i = 0;
     j = 0;
@@ -52,14 +48,14 @@ t_coor    *bsq(char **tab, t_coor max, t_coor *max_bsq, t_char param)
     return (max_bsq);
 }
 
-void    print_bsq(char **buff,t_coor max_bsq, t_coor max, t_char param)
+void		print_bsq(char **buff,t_coor max_bsq, t_coor max, t_char param)
 {
-    int i;
-    int j;
+    int		i;
+    int		j;
 
     i = 0;
     j = 0;
-    while(i < max_bsq.size)
+    while (i < max_bsq.size)
     {
         while (j < max_bsq.size)
         {
