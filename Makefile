@@ -4,7 +4,8 @@ NAME	= bsq
 SRC		=	bsq.c \
 			bsq_ft.c \
 			bsq_ft2.c \
-			basic_ft.c
+			basic_ft.c \
+			ft_check_map.c
 
 CFLAGS	= -Wall -Werror -Wextra
 

@@ -20,7 +20,7 @@ int			bsq_size(char **tab, t_coor max, t_coor coor, t_char param)
     return (size);
 }
 
-t_coor		*bsq(char **tab, t_coor max, t_coor *max_bsq, t_char param)
+t_coor		*bsq_search(char **tab, t_coor max, t_coor *max_bsq, t_char param)
 {
     int		i;
     int		j;
