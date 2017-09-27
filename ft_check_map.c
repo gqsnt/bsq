@@ -2,7 +2,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdio.h>
 #include "bsq.h"
 
 int			ft_check2_map(t_coor max, int fd, char g, char b)

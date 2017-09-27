@@ -4,8 +4,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "bsq.h"
-#include <stdio.h>
-
 
 char		**ft_read_line(int fd, char **buff, int size, t_char param)
 {
@@ -119,7 +117,6 @@ int			main(int argc, char **argv)
 		if (ft_check_map(argv[i]) == 0)
 		{
 			ft_putstr("map error\n");
-
 		}
 		else
 		{
