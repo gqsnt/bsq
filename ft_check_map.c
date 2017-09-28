@@ -48,6 +48,10 @@ int			ft_check_map(char *name)
 	if (max.y <= 0 || max.x <= 0)
 		return (0);
 	if (ft_check2_map(max, fd, info[i], info[i + 1]) == max.y)
-		return (1);
+    {
+        close(fd);
+        return (1);
+    }
+    close(fd);
 	return (0);
 }
